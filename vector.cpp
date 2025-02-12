@@ -46,22 +46,15 @@ void part2() {
      * 2 vectors
      */
     std::cout<<"Part 2 implement"<<std::endl;
-    std::vector<bool> vector_bool;
-    std::vector<char> vector_char;
-
-    for (int i=0;i<10000;i++){
-        vector_bool.push_back(i);
-    }
-    for (int i=0;i<10000;i++){
-        vector_char.push_back(i);
-    }
+    std::vector<bool> vector_bool(10000);
+    std::vector<char> vector_char(10000);
     
-    //The cost + the cost of itself
-    std::size_t memory_usage_char = vector_char.size() * sizeof(char)+ sizeof(vector_char);
+    
+    std::size_t memory_usage_char = vector_char.capacity();
 
+    
+    std::size_t memory_usage_bool = (vector_bool.capacity() + 7) / 8 ;
 
-    //boolean is 1 bits, and it should devide by 8 to get the bytes
-    std::size_t memory_usage_bool= (vector_bool.size()+7)/8;
 
     std::cout<<"Memory usage of std::vector<bool>: "<<memory_usage_bool<<" bytes"<<std::endl;
     std::cout<<"Memory usage of std::vector<char>: "<<memory_usage_char<<" bytes"<<std::endl;
